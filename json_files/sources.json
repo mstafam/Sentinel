@@ -1,0 +1,44 @@
+[
+   {
+   "NewsSource":"CoinDesk",
+   "URL":"https://www.coindesk.com/livewire/",
+   "IsDynamicWebPage": false,
+   "ArticleIsID": false,
+   "Article":"card__TimelineCardWrapper-sc-3i6u6z-0 eTaajC",
+   "ArticleTitleElement":"a",
+   "ArticleTitleClass":"headline__HeadlineLink-sc-1uoawmp-0 jbDMkW",
+   "WebsiteForLink":"http://coindesk.com",
+   "ArticleLinkIsClass": true,
+   "ArticleLinkClass":"headline__HeadlineLink-sc-1uoawmp-0 jbDMkW",
+   "LatestArticle":"",
+   "AccessDenied": 0
+   },
+   {
+      "NewsSource":"Reuters",
+      "URL":"https://www.reuters.com/business/future-of-money/",
+      "IsDynamicWebPage":false,
+      "ArticleIsID":false,
+      "Article":"hero-card__container__D4yIc hero-card__has-image__3qbRi hero-card__top-headline__rUvXC",
+      "ArticleTitleElement":"a",
+      "ArticleTitleClass":"text__text__1FZLe text__dark-grey__3Ml43 text__medium__1kbOh text__heading_3__1kDhc heading__base__2T28j heading__heading_3__3aL54 title__title__29EfZ hero-card__title__2Ufk-",
+      "WebsiteForLink":"https://www.reuters.com",
+      "ArticleLinkIsClass":true,
+      "ArticleLinkClass":"text__text__1FZLe text__dark-grey__3Ml43 text__medium__1kbOh text__heading_3__1kDhc heading__base__2T28j heading__heading_3__3aL54 title__title__29EfZ hero-card__title__2Ufk-",
+      "LatestArticle":"",
+      "AccessDenied": 0
+   },
+   {
+      "NewsSource":"CoinTelegraph",
+      "URL":"https://cointelegraph.com/category/latest-news",
+      "IsDynamicWebPage":true,
+      "ArticleIsID":false,
+      "Article":"post-card-inline",
+      "ArticleTitleElement":"span",
+      "ArticleTitleClass":"post-card-inline__title",
+      "WebsiteForLink":"https://cointelegraph.com",
+      "ArticleLinkIsClass":true,
+      "ArticleLinkClass":"post-card-inline__title-link",
+      "LatestArticle":"",
+      "AccessDenied": 0
+   }
+]

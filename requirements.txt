@@ -1,0 +1,9 @@
+beautifulsoup4==4.11.1
+ccxt==2.8.21
+numpy==1.25.2
+python-dotenv==1.0.0
+Requests==2.31.0
+requests_html==0.10.0
+rich==13.5.2
+sentence_transformers==2.2.2
+transformers==4.32.1
