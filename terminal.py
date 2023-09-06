@@ -12,6 +12,7 @@ classifier_model = pipeline("zero-shot-classification", model="facebook/bart-lar
 latest_articles_tensors = deque([])
 assets = []
 exchanges = []
+amount = 0
 console = Console()
 console.print("[bold cyan][SYSTEM][/] Done Loading!\n")
 
@@ -24,6 +25,7 @@ def toTradeFunc():
     will enter Trading Mode.
     """
     if toTrade == "Y":
+        global amount
         console.print("\n[bold yellow][MODE][/] Trading Mode\n")
         flags = os.O_CREAT | os.O_EXCL | os.O_WRONLY
         try:
@@ -39,6 +41,9 @@ def toTradeFunc():
                     exit()
                 else:
                     console.print("[SUCCESS] Successfully Authenticated!\n", style="bold green")
+                    amount = console.input("[bold blue][PROMPT][/] Enter order size to execute per trade in USD: ").upper()
+                    while not amount.replace(".", "").isnumeric():
+                        amount = console.input("[bold blue][PROMPT][/] Enter order size to execute per trade in USD: ").upper()
             else: 
                 raise
         else:
@@ -62,9 +67,13 @@ def toTradeFunc():
                 else:
                     Authenticated = True
                     console.print("\n[SUCCESS] Successfully Authenticated!\n", style="bold green")
+                    amount = console.input("[bold blue][PROMPT][/] Enter order size to execute per trade in USD: ").upper()
+                    while not amount.replace(".", "").isnumeric():
+                        amount = console.input("[bold blue][PROMPT][/] Enter order size to execute per trade in USD: ").upper()
     else:
-        console.print("\n[bold yellow][MODE][/] Information Mode\n")
+        console.print("\n[bold yellow][MODE][/] Information Mode")
         pass
+    console.print("\n[bold cyan][SYSTEM][/] Waiting for new articles...\n")
 
 def getData():
     """
@@ -213,10 +222,10 @@ if __name__ == "__main__":
                 console.print(f"[bold orange3][SENTIMENT][/] Sentiment: {sentiment[0]['label']} | Relevant Ticker: {ticker}", end="\n"*2)
                 if ticker != "OTHER":
                     if sentiment[0]['label'] == 'Positive':
-                        order = createOrder(symbol=ticker, side="buy", amount=200)
+                        order = createOrder(symbol=ticker, side="buy", amount=amount)
                         console.print(order, end="\n")
                     elif sentiment[0]['label'] == 'Negative':
-                        order = createOrder(symbol=ticker, side="sell", amount=200)
+                        order = createOrder(symbol=ticker, side="sell", amount=amount)
                         console.print(order, end="\n")
             time.sleep(2)
     else:

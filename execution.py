@@ -54,10 +54,10 @@ def createOrder(symbol, side, amount, type="market"):
         try:
             amount = amount / binance.fetch_ticker(ticker)['last']
             if amount > USDTBalance:
-                return f"[bold red][FAILED ORDER][/] Amount is greater than available USDT balance."
+                return f"[bold red][FAILED ORDER][/] Amount is greater than available USDT balance.\n"
             order = binance.create_order(symbol=ticker, side=side, type=type, amount=amount)
-            return f"[bold green][SUCCESSFUL ORDER][/] {order['info']['executedQty']} {symbol.upper()} {side.upper()} filled at {order['info']['avgPrice']}."
+            return f"[bold green][SUCCESSFUL ORDER][/] {order['info']['executedQty']} {symbol.upper()} {side.upper()} filled at {order['info']['avgPrice']}.\n"
         except ccxt.ExchangeError as e:
-            return f"[bold red][ERROR] {e}.[/]"
+            return f"[bold red][ERROR] {e}.[/]\n"
     else:
-        return "[bold red][ERROR] Binance does not offer this asset.[/]"
+        return "[bold red][ERROR] Binance does not offer this asset.[/]\n"
