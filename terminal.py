@@ -41,17 +41,17 @@ def toTradeFunc():
                     exit()
                 else:
                     console.print("[SUCCESS] Successfully Authenticated!\n", style="bold green")
-                    amount = console.input("[bold blue][PROMPT][/] Enter order size to execute per trade in USD: ").upper()
+                    amount = console.input("[PROMPT] Enter order size to execute per trade in USD: ").upper()
                     while not amount.replace(".", "").isnumeric():
-                        amount = console.input("[bold blue][PROMPT][/] Enter order size to execute per trade in USD: ").upper()
+                        amount = console.input("[PROMPT] Enter order size to execute per trade in USD: ").upper()
             else: 
                 raise
         else:
             console.print("[bold cyan][SYSTEM][/] Environment File Created!\n")
             with os.fdopen(file_handle, 'w') as file_obj:
-                api_key = console.input("[bold blue][PROMPT][/] Enter your Binance Futures Api Key: ")
+                api_key = console.input("[PROMPT] Enter your Binance Futures Api Key: ")
                 file_obj.write(f'BINANCE_API_KEY_FUTURES="{api_key}"\n')
-                api_secret = console.input("[bold blue][PROMPT][/] Enter your Binance Futures Api Secret: ")
+                api_secret = console.input("[PROMPT] Enter your Binance Futures Api Secret: ")
                 file_obj.write(f'BINANCE_API_SECRET_FUTURES="{api_secret}"')
             Authenticated = False
             while not Authenticated:
@@ -60,16 +60,16 @@ def toTradeFunc():
                     from execution import createOrder
                 except: 
                     console.print("\n[ERROR] Invalid API Key.\n", style="bold red")
-                    api_key = console.input("[bold blue][PROMPT][/] Enter your Binance Futures Api Key: ")
-                    api_secret = console.input("[bold blue][PROMPT][/] Enter your Binance Futures Api Secret: ")
+                    api_key = console.input("[PROMPT] Enter your Binance Futures Api Key: ")
+                    api_secret = console.input("[PROMPT] Enter your Binance Futures Api Secret: ")
                     os.environ['BINANCE_API_KEY_FUTURES'] = api_key
                     os.environ['BINANCE_API_SECRET_FUTURES'] = api_secret
                 else:
                     Authenticated = True
                     console.print("\n[SUCCESS] Successfully Authenticated!\n", style="bold green")
-                    amount = console.input("[bold blue][PROMPT][/] Enter order size to execute per trade in USD: ").upper()
+                    amount = console.input("[PROMPT] Enter order size to execute per trade in USD: ").upper()
                     while not amount.replace(".", "").isnumeric():
-                        amount = console.input("[bold blue][PROMPT][/] Enter order size to execute per trade in USD: ").upper()
+                        amount = console.input("[PROMPT] Enter order size to execute per trade in USD: ").upper()
     else:
         console.print("\n[bold yellow][MODE][/] Information Mode")
         pass
@@ -209,9 +209,9 @@ def parseTitle(title):
     return assets_list, tickers_list, exchanges_list
 
 if __name__ == "__main__":
-    toTrade = console.input("[bold blue][PROMPT][/] Would you like to enable automatic trading based on the latest news (Y/N): ").upper()
+    toTrade = console.input("[PROMPT] Would you like to enable automatic trading based on the latest news (Y/N): ").upper()
     while toTrade != "Y" and toTrade != "N":
-        toTrade = console.input("[bold blue][PROMPT][/] Would you like to enable automatic trading based on the latest news (Y/N): ").upper()
+        toTrade = console.input("[PROMPT] Would you like to enable automatic trading based on the latest news (Y/N): ").upper()
     getData()
     toTradeFunc()
     if toTrade == "Y":
@@ -219,7 +219,7 @@ if __name__ == "__main__":
             news = main()
             if news != None:
                 sentiment, ticker = getSentiment(news)
-                console.print(f"[bold orange3][SENTIMENT][/] Sentiment: {sentiment[0]['label']} | Relevant Ticker: {ticker}", end="\n"*2)
+                console.print(f"[bold blue][SENTIMENT][/] Sentiment: {sentiment[0]['label']} | Relevant Ticker: {ticker}", end="\n"*2)
                 if ticker != "OTHER":
                     if sentiment[0]['label'] == 'Positive':
                         order = createOrder(symbol=ticker, side="buy", amount=amount)
@@ -233,5 +233,5 @@ if __name__ == "__main__":
             news = main()
             if news != None:
                 sentiment, ticker = getSentiment(news)
-                console.print(f"[bold orange3][SENTIMENT][/] Sentiment: {sentiment[0]['label']} | Relevant Ticker: {ticker}", end="\n"*2)
+                console.print(f"[bold blue][SENTIMENT][/] Sentiment: {sentiment[0]['label']} | Relevant Ticker: {ticker}", end="\n"*2)
             time.sleep(3)

@@ -60,7 +60,7 @@ def scraper(source):
                     else:
                         latest_articles_tensors.append(tensor)
                     localTime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
-                    console.print(f'[bold orange3][NEWS][/] {localTime} | {news_source}: {article_title.text.upper().strip()} | {article_link}\n')
+                    console.print(f'[bold blue][NEWS][/] {localTime} | {news_source}: {article_title.text.upper().strip()} | {article_link}\n')
                     return article_title.text.upper().strip()
             except Exception as e:
                 if str(e) == "'NoneType' object has no attribute 'find'":
@@ -96,7 +96,7 @@ def scraper(source):
                     else:
                         latest_articles_tensors.append(tensor)
                     localTime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
-                    console.print(f'[bold orange3][NEWS][/] {localTime} | {news_source}: {article_title.text.upper().strip()} | {article_link}\n')
+                    console.print(f'[bold blue][NEWS][/] {localTime} | {news_source}: {article_title.text.upper().strip()} | {article_link}\n')
                     return article_title.text.upper().strip()
             except Exception as e:
                 if str(e) == "'NoneType' object has no attribute 'find'":
