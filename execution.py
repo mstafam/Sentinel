@@ -52,7 +52,7 @@ def createOrder(symbol, side, amount, type="market"):
     symbolAvailable, ticker = isSymbolAvailable(symbol)
     if symbolAvailable:
         try:
-            amount = amount / binance.fetch_ticker(ticker)['last']
+            amount = float(amount) / binance.fetch_ticker(ticker)['last']
             if amount > USDTBalance:
                 return f"[bold red][FAILED ORDER][/] Amount is greater than available USDT balance.\n"
             order = binance.create_order(symbol=ticker, side=side, type=type, amount=amount)
